@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Suspense, useState } from "react"
 import { MODALS } from "@/utils/constants";
 import CalendarModal from "./CalendarModal";
-import FriendsModal from "./FriendsModal";
+import dynamic from "next/dynamic";
 
 
 interface ActiveModalProps {
@@ -19,7 +19,8 @@ const ActiveModal: React.FC<ActiveModalProps> = ({ activeModal, closeModal }) =>
             case MODALS.EVENT:
                 return <></>
             case MODALS.FRIENDS:
-                return <FriendsModal closeModal={closeModal} />
+                return <></>
+            // return <FriendsModal />;
             case MODALS.LOADING:
                 return <></>
             default:
