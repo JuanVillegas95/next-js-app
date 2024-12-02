@@ -1,34 +1,11 @@
 "use client"
+import { useAuth } from "@/components/Providers";
 import { Container, Flex, Button, Center } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Home = () => {
-    const [loading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>();
-
-    const signIn = async (providerName: "google" | "github"): Promise<void> => {
-        setIsLoading(true);
-        try {
-            const response = await fetch("/api/auth", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ providerName }),
-            });
-
-            if (!response.ok) {
-                throw new Error("Login failed");
-            }
-
-            console.log("Logged in successfully");
-            setError(null);
-        } catch (error) {
-            console.error(error);
-            setError("Login failed. Please try again.");
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    const { signIn } = useAuth();
 
     return <Flex
         justify="center"

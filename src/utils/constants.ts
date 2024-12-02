@@ -21,6 +21,7 @@ export const enum MODALS {
   EVENT,
   CALENDAR,
   LOADING,
+  FRIENDS,
 }
 
-export const USER_EMAIL: string = "juan@example.com";
+export const USER_ID: string = "BtXktmE5bOU5RHtNlw9vji9tcV23";

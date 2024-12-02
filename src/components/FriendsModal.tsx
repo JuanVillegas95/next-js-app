@@ -15,11 +15,9 @@ import { useEffect, useState } from "react";
 import { VStack } from "@chakra-ui/react";
 // import { getCalendarKeys } from "@/app/api/actions/calendarActions";
 
-const CalendarModal: React.FC<BaseModalProps> = ({ closeModal }) => {
+const FriendsModal: React.FC<BaseModalProps> = ({ closeModal }) => {
     const [calendarKeys, setCalendarKeys] = useState<string[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-
-
 
     return <DialogRoot
         lazyMount
@@ -34,7 +32,7 @@ const CalendarModal: React.FC<BaseModalProps> = ({ closeModal }) => {
     >
         <DialogContent >
             <DialogHeader display="flex" justifyContent={"space-around"}>
-                <DialogTitle>Calendars</DialogTitle>
+                <DialogTitle>Friends</DialogTitle>
                 <Button>Add Calendar</Button>
             </DialogHeader>
             <DialogBody>
@@ -56,4 +54,4 @@ const CalendarModal: React.FC<BaseModalProps> = ({ closeModal }) => {
     </DialogRoot>
 };
 
-export default CalendarModal;
+export default FriendsModal;

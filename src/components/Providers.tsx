@@ -4,7 +4,7 @@ import { ColorModeProvider } from "./ui/color-mode";
 import { ChakraProvider, Theme, defaultSystem } from "@chakra-ui/react"
 import { signInWithPopup, GoogleAuthProvider, signOut, GithubAuthProvider, onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@/config/firebase";
-
+import { useRouter } from "next/navigation";
 const ThemeContext = createContext<{
     theme: "light" | "dark";
     toggleTheme: () => void;
@@ -32,7 +32,7 @@ export const useAuth = () => {
 const Providers = ({ children }: { children: React.ReactNode }) => {
     const [theme, setTheme] = useState<"light" | "dark">("light");
     const [user, setUser] = useState<User | null>(null);
-
+    const router = useRouter();
     const toggleTheme = (): void =>
         setTheme((state) => (state === "light" ? "dark" : "light"));
 
@@ -50,6 +50,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
                 default:
                     console.error(`Unsupported provider: ${providerName}`);
             }
+            router.push("/dashboard")
         } catch (error) {
 
         }
